@@ -1,0 +1,43 @@
+<!-- i m in message -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>message</title>
+</head>
+<style type="text/css">
+	.success{
+			background-color: yellowgreen;
+			height: 30px;
+		}
+		.failure{
+			background-color: yellow;
+			height: 30px;
+		}
+</style>
+<body>
+	<?php
+	$messages = new Model_Core_Message();
+	$message= $messages->getMessages();
+
+		
+	// $messages->getSession()->start();
+	  if (isset($message['success'])) 
+	 {
+	  	 echo '<div class="success">' .$message['success'].'!</div>'; 
+	  }
+	 if (isset($message['failure'])) 
+	 {
+	 	 echo'<div class="failure">' .$message['failure'].'!</div>';
+	 }
+	 if (isset($message['notice'])) 
+	 {
+	 	echo $message['notice'];
+	 }
+	 	$messages->cleanMessages();
+?>
+
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<?php
+$result=$this->getCollection();
+?>
+
+		<div class="row">
+			<div class="col-10">
+				<h3>PAYMENT METHOD</h3>
+			</div>
+			<div class="col-2">
+				
+		<div class="btn btn-info link-secondary"><a href="<?php echo $this->getUrl('payment','add'); ?>">ADD PAYMENT</a></div>
+			</div>
+		</div>
+		
+		<table class="table table-bordered table-hover w-100">
+			
+			<tr class="table-success">
+				<th>PaymentId</th>
+				<th>Name</th>
+				<th>Status</th>
+				<th>CreatedAt</th>
+				<th>UpdatedAt</th>
+				<th>Edit</th>
+				<th>Delete</th>
+				
+			</tr>
+			<?php foreach ($result->getData() as $payment):  ?>
+			<tr>
+				<td><?php  echo $payment->payment_id;?> </td>
+				<td><?php echo $payment->name;?></td>
+				<td><?php echo $payment->getstatustext();?></td>
+				<td><?php echo $payment->create_at;?></td>
+				<td><?php echo $payment->update_at;?></td>
+				<td><a href="<?php echo $this->getUrl('payment','edit',
+				['payment_id'=>$payment->payment_id]);?>">Edit</a></td>
+				<td><a href="<?php echo $this->getUrl('payment','delete',['payment_id'=>$payment->payment_id]);?>">Delete</a></td>
+				
+			</tr>
+			<?php endforeach; ?>
+		</table>
