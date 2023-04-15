@@ -42,6 +42,16 @@ class Block_Admin_Grid extends Block_Core_Grid
 		return parent::_prepareActions();	
 	}
 
+	public function getEditUrl($row, $key)
+	{
+		echo "string";
+		return $this->getUrl(null,$key,['admin_id' => $row->getId()], true);
+	}
+	public function getDeleteUrl($row, $key)
+	{
+		return $this->getUrl(null,$key,['admin_id' => $row->getId()], true);
+	}
+
 
 	protected function _prepareButtons()
 	{

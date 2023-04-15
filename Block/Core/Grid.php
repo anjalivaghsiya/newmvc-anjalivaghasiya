@@ -52,14 +52,14 @@ class Block_Core_Grid extends Block_Core_Templete
 		return $this;
 	}
 
-
 	public function getActions()
 	{
 		return $this->_actions;
 	}
-	public function setActions(array $actions)
+	
+	public function setActions(array $_actions)
 	{
-		$this->_actions = $actions;
+		$this->_actions = $_actions;
 		return $this;
 	}
 
@@ -87,14 +87,7 @@ class Block_Core_Grid extends Block_Core_Templete
 		return $this;
 	}
 
-	public function getEditUrl($row, $key)
-	{
-		return $this->getUrl( null,$key, ['id' => $row->getId()], true);
-	}
-	public function getDeleteUrl($row, $key)
-	{
-		return $this->getUrl( null,$key, ['id' => $row->getId()], true);
-	}
+	
 
 
 	public function getColumnValue($row, $key)
@@ -153,18 +146,18 @@ class Block_Core_Grid extends Block_Core_Templete
 		return $this->_title;
 	}
 
-	public function getPayments()
-	{
-		$query = "SELECT * FROM `payment`";
-		$payments = Ccc::getModel('Payment')->fetchAll($query);
-		return $payments->getData();
-	}
+	// public function getPayments()
+	// {
+	// 	$query = "SELECT * FROM `payment`";
+	// 	$payments = Ccc::getModel('Payment')->fetchAll($query);
+	// 	return $payments->getData();
+	// }
 
-	public function getAdmins()
-	{
-		$query = "SELECT * FROM `admin`";
-		$admins = Ccc::getModel('Admin')->fetchAll($query);
-		return $admins->getData();
-	}
+	// public function getAdmins()
+	// {
+	// 	$query = "SELECT * FROM `admin`";
+	// 	$admins = Ccc::getModel('Admin')->fetchAll($query);
+	// 	return $admins->getData();
+	// }
 }
 ?>
