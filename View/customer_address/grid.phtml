@@ -11,6 +11,7 @@ $address = $this->getAddress();
 		<th>Country</th>
 		<th>Zip_code</th>
 		<th> customer_id</th>
+		<!-- <th> Delete</th> -->
 
 	</tr>
 	<tr>
@@ -21,6 +22,7 @@ $address = $this->getAddress();
 			<td><?php echo $address->country;?></td>
 			<td><?php echo $address->zip_code;?></td>
 			<td><?php echo $address->customer_id;?></td>
+			<!-- <td><a href="<?php echo $this->getUrl('customer_Address','delete',['customer_id'=>$address->customer_id]);?>">Delete</a></td> -->
 		
 	</tr>
 </table>

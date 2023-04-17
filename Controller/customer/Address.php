@@ -76,6 +76,30 @@ class Controller_Customer_Address extends Controller_Core_Action
 			$this->redirect("index.php?a=grid&c=customer_address");
 		}
 	}
+
+	public function deleteAction()
+	{
+		echo "<pre>";
+		try {
+			
+		$request = $this->getRequest();
+		if (!$request->isGet()) {
+			throw new Exception("Invalid request", 1);
+		}
+		// $id = $request->getPost('');
+		$customerid = $request->getParam('customer_id');
+		$customerAddress = Ccc::getModel('CustomerAddress');
+		$customerAddress->load($customerid);
+		print_r($customerAddress);
+		$customerAddress->delete();
+		$this->getMessage()->addMessages("Address delete successfully..", Model_Core_Message::SUCCESS);
+		// $this->redirect(null, 'grid',['customer_id'=>$customerid]);
+
+		} catch (Exception $e) {
+		$this->getMessage->addMessages("Address not delete .", Model_Core_Message::FAILURE);
+			
+		}
+	}
 	
 }
 ?>

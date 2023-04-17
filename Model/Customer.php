@@ -27,20 +27,39 @@ class Model_Customer extends Model_Core_Table
 			return $statuses[ Model_Customer_Resource::STATUS_DEFAULT];
 	}
 
+	public function getBillingAddress()
+	{
+		$request = Ccc::getModel('Core_Request');
+		$modelAddress = Ccc::getModel('CustomerAddress');
+		$id = $request->getParam('customer_id');
+		if ($id) {
+			
+		$query = "SELECT * FROM `customer` WHERE `customer_id` = '$id'";
+		$customer = $this->fetchRow($query);
+
+		$query = "SELECT * FROM `customer_address` WHERE `address_id` ={$customer->billing_address_id}";
+		$address = $modelAddress->fetchRow($query);
+
+		}
+		return $modelAddress;
+	}
 
 	public function getShippingAddress()
 	{
+		$request = Ccc::getModel('Core_Request');
+		$modelAddress = Ccc::getModel('CustomerAddress');
+		$id = $request->getParam('customer_id');
+		if ($id) {
+			
+		$query = "SELECT * FROM `customer` WHERE `customer_id` = '$id'";
+		$customer = $this->fetchRow($query);
 
-		$address = Ccc::getModel('CustomerAddress');
-		
+		$query = "SELECT * FROM `customer_address` WHERE `address_id` ={$customer->shipping_address_id}";
+		$address = $modelAddress->fetchRow($query);
 
 	}
-
-	public function getBillingAddress()
-	{
-		
-	}
-
+	return $modelAddress;
+}
 	
 }
 ?>

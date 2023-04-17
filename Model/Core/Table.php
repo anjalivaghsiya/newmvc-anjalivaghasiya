@@ -9,7 +9,7 @@ class Model_Core_Table
 
 public function __construct()
 {
-	// code...
+	
 }
 
 	public function __set($key,$value){
@@ -70,6 +70,7 @@ public function __construct()
 		}
 		$model = new $resourceClass();
 		$this->setResource($model);
+		print_r($model);
 		return $model;
 	}
 
@@ -129,14 +130,14 @@ public function setCollection($collection)
 	{
 		$this->data[$this->getResource()->getPrimaryKey()] = $id;
 		return $this;
-		print_r($this);
+		// print_r($this);
 	}
 
 	public function getId()
 	{
 		$primaryKey = $this->getResource()->getPrimaryKey();
 		return $this->$primaryKey;
-		print_r($this->$primaryKey);
+		// print_r($this->$primaryKey);
 
 	}
 
@@ -205,7 +206,9 @@ public function setCollection($collection)
 	public function delete()
 	{
 		$id	 = $this->getData( $this->getResource()->getPrimaryKey());
+		print_r($id);
 		if (!$id) {
+			echo "string";
 			return false;
 		}
 	 $this->getResource()->delete($id);

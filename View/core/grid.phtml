@@ -1,5 +1,9 @@
 <?php
+// echo "<pre>";
 $admins = $this->getAdmins();
+// $data = $this->getColumns();
+// $data = $this->_prepreActions();
+// print_r($data);
 ?>
 			<?php echo $this->getTitle(); ?>
 		<button class=" btn btn-bg-info" type="submit">
@@ -10,8 +14,6 @@ $admins = $this->getAdmins();
 		</button>
 		</tr>
 	</table>
-	<br/>
-	<br/>
 	<table class="table table-bordered">
 		<?php if (!$admins): ?>
 		<tr>
@@ -29,11 +31,11 @@ $admins = $this->getAdmins();
 			<?php endforeach; ?>
 		</tr>
 
-		<?php foreach ($admins as $admin) : ?>
+		<?php foreach ($admins as $row) : ?>
 		<tr >
 
 			<?php foreach($this->getColumns() as $key => $column): ?>
-				<td><?php echo $this->getColumnValue($admin, $key); ?></td>
+				<td><?php echo $this->getColumnValue($row, $key); ?></td>
 			<?php endforeach; ?>
 
 			<?php foreach($this->getActions() as $key => $action): ?>
